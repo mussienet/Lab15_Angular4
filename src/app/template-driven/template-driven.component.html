@@ -1,0 +1,43 @@
+
+  <form #f='ngForm' (ngSubmit)="onSubmit()">
+
+    <label for="username">Username</label>
+    <input type="text" 
+            name="name" 
+            [(ngModel)]="user.name"
+            class="form-control"
+            required
+            #name="ngModel">
+        <div *ngIf="!name.valid"> Name Required</div>
+
+    <label for="email">E-Mail</label>
+    <input type="text" 
+            name="email"
+            [(ngModel)]="user.email"
+            class="form-control"
+            required
+            pattern="[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"
+            #email="ngModel">
+       <div *ngIf="!email.valid">
+        Invalid email
+      </div>
+  
+<!--<textarea rows="4" cols="50">-->
+
+      <label for="post">Post</label><textarea
+            rows="4" cols="25"
+            name="post" 
+            class="form-control"
+            [(ngModel)]="user.post"
+            required
+            #post="ngModel"></textarea>
+        <div *ngIf="!name.valid"> Post Required</div>
+
+      
+      <button type="submit" [disabled]="!f.valid" class="btn btn-primary">Submit</button>   
+      <button type="button" (click)="getData()" class="btn btn-primary">Get Data</button>      
+
+
+  </form>
+
+
